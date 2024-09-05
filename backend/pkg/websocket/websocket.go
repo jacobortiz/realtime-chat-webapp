@@ -16,12 +16,12 @@ var upgrader = websocket.Upgrader{
 }
 
 func Upgrade(w http.ResponseWriter, r *http.Request) (*websocket.Conn, error) {
-    ws, err := upgrader.Upgrade(w, r, nil)
+    conn, err := upgrader.Upgrade(w, r, nil)
     if err != nil {
         log.Println(err)
-        return ws, err
+        return nil, err
     }
-    return ws, nil
+    return conn, nil
 }
 
 func Reader(conn *websocket.Conn) {
